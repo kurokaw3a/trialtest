@@ -1,0 +1,21 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.test{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.testLogo{
+    width: 300px;
+    height: auto;
+}

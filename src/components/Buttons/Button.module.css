@@ -1,0 +1,23 @@
+.default{
+    background-color: #333;
+    font-size: 15px;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: #555;
+    }
+}
+
+.disabled {
+    background-color: #7a7a7a;
+    font-size: 15px;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: wait;
+}

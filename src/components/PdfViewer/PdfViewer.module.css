@@ -1,0 +1,51 @@
+.pdfViewer{
+    display: flex;
+    align-items: flex-start;
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pdf {
+    width: max-content;
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+.page2{
+    display: none;
+    @media screen and (max-width: 768px) {
+        display: flex;
+    }
+}
+
+.page{
+    display: flex;
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+
+}
+
+.arrow{
+    font-size: 25px;
+    font-weight: bold;
+    border: 1px solid;
+    color: white;
+    border-radius: 10px;
+    background: rgb(0, 0, 0);
+    padding: 5px;
+    user-select: none;
+    cursor: pointer;
+    @media screen and (max-width: 768px) {
+        font-size: 12px;
+    }
+}
