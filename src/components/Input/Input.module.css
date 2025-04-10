@@ -1,0 +1,29 @@
+.testing{
+    width: 1.5em;
+    height: 1.5em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #000000;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.testing:checked {
+    background-color: #333;
+    border: 1px solid #333;
+}
+
+.testingLocked {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: #333;
+    vertical-align: middle;
+    border: 1px solid #000000;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}

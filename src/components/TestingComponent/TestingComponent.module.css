@@ -1,0 +1,46 @@
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+}
+
+
+
+.input{
+    width: 135px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    p {
+        text-align: right;
+        width: 15px;
+    }
+    
+}
+.disabled{
+    width: 135px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0.5;
+    pointer-events: none;
+    p {
+        text-align: right;
+        width: 15px;
+    }
+}
+
+.label{
+    width: 87px;
+    display: flex;
+    gap: 13px;
+}
+
+.inputs{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
