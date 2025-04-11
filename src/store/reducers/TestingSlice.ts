@@ -213,7 +213,7 @@ const initialState = {
 };
 
 export const TestingSlice = createSlice({
-  name: "Testing",
+  name: "testing",
   initialState: initialState,
   reducers: {
     getTestById: (state, action) => {
@@ -246,12 +246,14 @@ export const TestingSlice = createSlice({
         const correctAnswersMap = new Map(
           testFile.answers.math.map((answer) => [answer.number, answer.value])
         );
+        
         const correctAnswersMapRussian1 = new Map(
           testFile.answers.russian1.map((answer) => [
             answer.number,
             answer.value,
           ])
         );
+
         const correctAnswersMapRussian2 = new Map(
           testFile.answers.russian2.map((answer) => [
             answer.number,
@@ -306,7 +308,7 @@ export const TestingSlice = createSlice({
         state.currentTest.totalUncorrect = uncorrectAnswers.length;
 
         alert(
-          `Ваш балл: ${state.currentTest.totalPoint}\nКоличество неправильных ответов: ${state.currentTest.totalUncorrect}`
+          `Ваш балл: ${state.currentTest.totalPoint || 0}\nКоличество неправильных ответов: ${state.currentTest.totalUncorrect || 0}`
         );
       }
     },

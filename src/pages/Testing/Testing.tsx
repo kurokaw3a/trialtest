@@ -102,13 +102,13 @@ export const Testing = () => {
   };
 
   const endTest = () => {
-    if (
-      selected.math.length > 1 &&
-      selected.russian1.length > 1 &&
-      selected.russian2.length > 1
-    ) {
+    // if (
+    //   selected.math.length > 1 &&
+    //   selected.russian1.length > 1 &&
+    //   selected.russian2.length > 1
+    // ) {
       dispatch(TestingSlice.actions.calculatePoints(selected));
-    }
+    // }
   };
 
   return (
