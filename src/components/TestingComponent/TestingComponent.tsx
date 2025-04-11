@@ -21,9 +21,6 @@ export const TestingComponent = ({
     Record<number, number | null>
   >({});
 
-  // const items = disabled.map((item) => item.number);
-  // const disabledA = disabled.map((item) => item.disabled);
-
   const selectVariant = (props: TestingComponentModel) => {
     setClickedInputs((prev) => {
       const currentSet = prev[props.number] || new Set();
