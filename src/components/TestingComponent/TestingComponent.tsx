@@ -74,9 +74,6 @@ export const TestingComponent = ({
                   !clickedInputs[el.number]?.has(value) &&
                   selectVariant({ number: el.number, value })
                 }
-                disabled={
-                  lockedDivs[el.number] || clickedInputs[el.number]?.has(value)
-                }
               />
             ))}
           </div>
