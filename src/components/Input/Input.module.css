@@ -7,14 +7,12 @@
     border: 1px solid #000000;
     appearance: none;
     -webkit-appearance: none;
+    -moz-appearance: none;
     outline: none;
     cursor: pointer;
 
-    @media screen and (max-width: 768px) {
-        width: 1.8em;
-        height: 1.8em;
-    }
 }
+
 
 .testing:checked {
     background-color: #333;
@@ -29,9 +27,13 @@
     border: 1px solid #000000;
     appearance: none;
     -webkit-appearance: none;
+    -moz-appearance: none;
     outline: none;
     cursor: pointer;
-    @media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 768px) {
+    .testing, .testingLocked{
         width: 1.8em;
         height: 1.8em;
     }

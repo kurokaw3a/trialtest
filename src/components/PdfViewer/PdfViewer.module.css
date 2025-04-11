@@ -1,11 +1,6 @@
 .pdfViewer{
     display: flex;
     align-items: flex-start;
-    @media screen and (max-width: 768px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }
 
 .container{
@@ -20,24 +15,16 @@
     height: 700px;
     overflow-y: auto;
     overflow-x: hidden;
-    @media screen and (max-width: 768px) {
-       width: 300px;
-       height: 422px;
-    }
 }
+
 
 .page2{
     display: none;
-    @media screen and (max-width: 768px) {
-        display: flex;
-    }
 }
 
 .page{
     display: flex;
-    @media screen and (max-width: 768px) {
-        display: none;
-    }
+
 
 }
 
@@ -51,7 +38,25 @@
     padding: 5px;
     user-select: none;
     cursor: pointer;
-    @media screen and (max-width: 768px) {
-        font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .pdfViewer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    }
+    .pdf{
+        width: 300px;
+        height: 422px;
+    }
+    .page{
+        display: none;
+    }
+    .page2{
+        display: flex;
+    }
+    .arrow{
+            font-size: 12px;
     }
 }
