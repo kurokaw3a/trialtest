@@ -114,6 +114,12 @@ export const Testing = () => {
   return (
     <div className={styles.testing}>
       <PdfViewer file={test.file} id={test.id} getPage={getPage} />
+      <div className={styles.buttonMedia}>
+        <Button variant="default" onClick={endTest}>
+          Завершить
+        </Button>
+        <div>3:35:00</div>
+      </div>
       <div className={styles.container}>
         <div className={currentPage > 9 ? styles.locked : ""}>
           <TestingComponent
@@ -139,9 +145,11 @@ export const Testing = () => {
           />
         </div>
       </div>
-      <Button variant="default" onClick={endTest}>
-        Завершить
-      </Button>
+      <div className={styles.button}>
+        <Button variant="default" onClick={endTest}>
+          Завершить
+        </Button>
+      </div>
     </div>
   );
 };

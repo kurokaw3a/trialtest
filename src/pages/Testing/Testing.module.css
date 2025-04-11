@@ -17,6 +17,7 @@
     overflow-y: auto;
     max-height: 95vh;
     @media screen and (max-width:768px) {
+        max-height: 35vh;
         max-width: 320px;
         overflow-x: auto;
     }
@@ -26,4 +27,26 @@
 .locked{
     opacity: 0.5;
     pointer-events: none;
+}
+
+.button{
+    display: block
+}
+
+.buttonMedia{
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+  .button{
+    display: none;
+  }
+  .buttonMedia{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+  }
 }
