@@ -210,10 +210,6 @@ const initialState = {
   list: testList,
   files: testFiles,
   currentTest: {} as ITestCurrent,
-  points: {},
-  trueAnswers: {
-    math: [],
-  },
 };
 
 export const TestingSlice = createSlice({
@@ -234,6 +230,8 @@ export const TestingSlice = createSlice({
         file: "",
         totalQuestions: 150,
         answers: state.currentTest.answers,
+        totalPoint: 0,
+        totalUncorrect: 0,
       };
     },
     calculatePoints: (state, action) => {

@@ -7,6 +7,7 @@
     @media screen and (max-width:768px) {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
     }
 }
 
@@ -29,24 +30,20 @@
     pointer-events: none;
 }
 
-.button{
-    display: block
+.section{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    gap: 30px;
+    
+    @media screen and (max-width:768px) {
+        flex-direction: column;   
+    }
+    
 }
 
-.buttonMedia{
-    display: none;
-}
-
-@media screen and (max-width:768px) {
-  .button{
-    display: none;
-  }
-  .buttonMedia{
+.controls{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 100%;
-  }
+    
 }

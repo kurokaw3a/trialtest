@@ -9,6 +9,5 @@ export const ClearStateByLocation = () => {
 
   if (location.pathname) {
     dispatch(TestingSlice.actions.clearState());
-    console.log("cleaned");
   }
 };

@@ -114,41 +114,37 @@ export const Testing = () => {
   return (
     <div className={styles.testing}>
       <PdfViewer file={test.file} id={test.id} getPage={getPage} />
-      <div className={styles.buttonMedia}>
-        <Button variant="default" onClick={endTest}>
-          Завершить
-        </Button>
-        <div>3:35:00</div>
-      </div>
-      <div className={styles.container}>
-        <div className={currentPage > 9 ? styles.locked : ""}>
-          <TestingComponent
-            test={test.answers?.math}
-            variant="math"
-            onClick={selectMath}
-          />
+      <div className={styles.section}>
+        <div className={styles.controls}>
+          <Button variant="default" onClick={endTest}>
+            Завершить
+          </Button>
         </div>
-        <div
-          className={currentPage > 9 && currentPage < 23 ? "" : styles.locked}
-        >
-          <TestingComponent
-            test={test.answers?.russian1}
-            variant="russian"
-            onClick={selectRussian1}
-          />
+        <div className={styles.container}>
+          <div className={currentPage > 9 ? styles.locked : ""}>
+            <TestingComponent
+              test={test.answers?.math}
+              variant="math"
+              onClick={selectMath}
+            />
+          </div>
+          <div
+            className={currentPage > 9 && currentPage < 23 ? "" : styles.locked}
+          >
+            <TestingComponent
+              test={test.answers?.russian1}
+              variant="russian"
+              onClick={selectRussian1}
+            />
+          </div>
+          <div className={currentPage > 22 ? "" : styles.locked}>
+            <TestingComponent
+              test={test.answers?.russian2}
+              variant="russian"
+              onClick={selectRussian2}
+            />
+          </div>
         </div>
-        <div className={currentPage > 22 ? "" : styles.locked}>
-          <TestingComponent
-            test={test.answers?.russian2}
-            variant="russian"
-            onClick={selectRussian2}
-          />
-        </div>
-      </div>
-      <div className={styles.button}>
-        <Button variant="default" onClick={endTest}>
-          Завершить
-        </Button>
       </div>
     </div>
   );

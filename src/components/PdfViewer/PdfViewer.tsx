@@ -15,21 +15,23 @@ export const PdfViewer = (props: PdfViewerModel) => {
 
   const prevPage = () => {
     setPageNumber((prev) => (prev > 1 ? prev - 1 : numPages));
-    props.getPage?.(pageNumber)
+    props.getPage?.(pageNumber);
   };
 
   const nextPage = () => {
     setPageNumber((prev) => (prev >= numPages ? 1 : prev + 1));
-    props.getPage?.(pageNumber)
+    props.getPage?.(pageNumber);
   };
 
   return (
-    <div className={styles.pdfViewer}>
+    <div className={styles.pdfViewer} rel="preload">
       <div className={styles.container}>
         <span onClick={prevPage} className={styles.arrow}>
           ←
         </span>
         <Document
+          loading="Загрузка файла..."
+          error="Загрузка файла..."
           file={props.file}
           onLoadSuccess={onDocumentLoadSuccess}
           className={styles.pdf}

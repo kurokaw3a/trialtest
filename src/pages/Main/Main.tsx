@@ -13,6 +13,7 @@ export const MainPage = () => {
             className={styles.testLogo}
             src={item.img}
             alt="test has no img"
+            rel="preload"
           />
           <h2>{item.title}</h2>
           <NavLink to={`/test/${item.id}`}>
