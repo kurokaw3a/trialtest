@@ -7,4 +7,17 @@
 body {
     font-family: Arial, sans-serif;
     color: #333;
+
 }
+
+::-webkit-scrollbar{
+    width: 3px;
+    height: 3px;
+}
+::-webkit-scrollbar-thumb{
+    background: rgba(0, 0, 0, 0.447);
+    border-radius: 10px;
+}
+
+
+

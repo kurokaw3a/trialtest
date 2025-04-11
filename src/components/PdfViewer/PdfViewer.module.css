@@ -11,13 +11,19 @@
 .container{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .pdf {
-    width: max-content;
+    width: 700px;
     max-height: 700px;
+    height: 700px;
     overflow-y: auto;
+    overflow-x: hidden;
+    @media screen and (max-width: 768px) {
+       width: 300px;
+       height: 422px;
+    }
 }
 
 .page2{
