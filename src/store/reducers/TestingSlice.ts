@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ITestCurrent, ITestList } from "./TestingModel";
 import logo from "../../assets/coomo_logo.e1e09338dc05a935d4ca5ba8981ca1fe.svg";
 import file1 from "../../assets/ceatm1.pdf";
+import { TestingCalculateModel } from "../../pages/Testing/TestingModel";
 // import file2 from "../../assets/ceatm18.pdf";
 // import file3 from "../../assets/ceatm19.pdf";
 
@@ -35,7 +36,7 @@ const testFiles: ITestCurrent[] = [
     answers: {
       math: [
         { number: 1, value: 2 },
-        { number: 2, value: 2 },
+        { number: 2, value: 1 },
         { number: 3, value: 1 },
         { number: 4, value: 2 },
         { number: 5, value: 1 },
@@ -209,6 +210,10 @@ const initialState = {
   list: testList,
   files: testFiles,
   currentTest: {} as ITestCurrent,
+  points: {},
+  trueAnswers: {
+    math: [],
+  },
 };
 
 export const TestingSlice = createSlice({
@@ -230,6 +235,82 @@ export const TestingSlice = createSlice({
         totalQuestions: 150,
         answers: state.currentTest.answers,
       };
+    },
+    calculatePoints: (state, action) => {
+      const answers = action.payload as TestingCalculateModel;
+
+      const mathTrueAnswers = [];
+      const russian1TrueAnswers = [];
+      const russian2TrueAnswers = [];
+      const uncorrectAnswers = [];
+
+      for (const testFile of testFiles) {
+        const correctAnswersMap = new Map(
+          testFile.answers.math.map((answer) => [answer.number, answer.value])
+        );
+        const correctAnswersMapRussian1 = new Map(
+          testFile.answers.russian1.map((answer) => [
+            answer.number,
+            answer.value,
+          ])
+        );
+        const correctAnswersMapRussian2 = new Map(
+          testFile.answers.russian2.map((answer) => [
+            answer.number,
+            answer.value,
+          ])
+        );
+
+        for (const userAnswer of answers.math) {
+          if (
+            userAnswer.value &&
+            correctAnswersMap.has(userAnswer.number) &&
+            correctAnswersMap.get(userAnswer.number) === userAnswer.value
+          ) {
+            mathTrueAnswers.push(userAnswer);
+          } else {
+            uncorrectAnswers.push(userAnswer);
+          }
+        }
+
+        for (const userAnswer of answers.russian1) {
+          if (
+            userAnswer.value &&
+            correctAnswersMapRussian1.has(userAnswer.number) &&
+            correctAnswersMapRussian1.get(userAnswer.number) ===
+              userAnswer.value
+          ) {
+            russian1TrueAnswers.push(userAnswer);
+          } else {
+            uncorrectAnswers.push(userAnswer);
+          }
+        }
+
+        for (const userAnswer of answers.russian2) {
+          if (
+            userAnswer.value &&
+            correctAnswersMapRussian2.has(userAnswer.number) &&
+            correctAnswersMapRussian2.get(userAnswer.number) ===
+              userAnswer.value
+          ) {
+            russian2TrueAnswers.push(userAnswer);
+          } else {
+            uncorrectAnswers.push(userAnswer);
+          }
+        }
+        state.currentTest.totalPoint = parseFloat(
+          (
+            mathTrueAnswers.length * 1.12 +
+            russian1TrueAnswers.length * 2 +
+            russian2TrueAnswers.length * 1.9
+          ).toFixed(1)
+        );
+        state.currentTest.totalUncorrect = uncorrectAnswers.length;
+
+        alert(
+          `Ваш балл: ${state.currentTest.totalPoint}\nКоличество неправильных ответов: ${state.currentTest.totalUncorrect}`
+        );
+      }
     },
   },
 });

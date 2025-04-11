@@ -20,4 +20,6 @@ export interface ITestCurrent {
     russian1: IAnswers[];
     russian2: IAnswers[];
   };
+  totalPoint?: number;
+  totalUncorrect?: number;
 }

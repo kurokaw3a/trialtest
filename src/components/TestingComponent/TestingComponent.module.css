@@ -34,13 +34,29 @@
 }
 
 .label{
+    display: flex;
+    padding-left: 15px;
+    gap: 13px;
+    @media screen and (max-width: 768px) {
+        padding-left: 20px;
+        font-size: 20px;
+        gap: 14px;
+    }
+}
+
+.label2{
     width: 87px;
     display: flex;
     gap: 13px;
+    @media screen and (max-width: 768px) {
+        width: max-content;
+        padding-left: 5px;
+        font-size: 20px;
+    }
 }
 
 .inputs{
     display: flex;
-    align-items: center;
+    justify-content: center;
     gap: 3px;
 }

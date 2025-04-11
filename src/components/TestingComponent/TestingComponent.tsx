@@ -50,7 +50,7 @@ export const TestingComponent = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.label}>
+      <div className={variant === "math" ? styles.label : styles.label2}>
         <p>A</p>
         <p>Б</p>
         <p>В</p>

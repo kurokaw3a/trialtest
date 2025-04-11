@@ -9,6 +9,11 @@
     -webkit-appearance: none;
     outline: none;
     cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+        width: 1.8em;
+        height: 1.8em;
+    }
 }
 
 .testing:checked {
@@ -26,4 +31,8 @@
     -webkit-appearance: none;
     outline: none;
     cursor: pointer;
+    @media screen and (max-width: 768px) {
+        width: 1.8em;
+        height: 1.8em;
+    }
 }

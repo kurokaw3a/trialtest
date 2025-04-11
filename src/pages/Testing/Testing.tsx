@@ -7,6 +7,7 @@ import { PdfViewer } from "../../components/PdfViewer/PdfViewer";
 import { TestingComponent } from "../../components/TestingComponent/TestingComponent";
 import { TestingComponentModel } from "../../components/TestingComponent/TestingComponentModel";
 import { Button } from "../../components/Buttons/Button";
+import { TestingCalculateModel } from "./TestingModel";
 
 export const Testing = () => {
   const { id } = useParams();
@@ -19,10 +20,10 @@ export const Testing = () => {
   const test = useAppSelector((state) => state.testing.currentTest);
 
   const [selected, setSelected] = useState({
-    math: [] as TestingComponentModel[],
-    russian1: [] as TestingComponentModel[],
-    russian2: [] as TestingComponentModel[],
-  });
+    math: [],
+    russian1: [],
+    russian2: [],
+  } as TestingCalculateModel);
 
   const selectMath = (number: TestingComponentModel) => {
     setSelected((prevSelected) => {
@@ -94,7 +95,15 @@ export const Testing = () => {
     });
   };
 
-  console.log(selected);
+  const endTest = () => {
+    // if (
+    //   selected.math.length > 1 &&
+    //   selected.russian1.length > 1 &&
+    //   selected.russian2.length > 1
+    // ) {
+    dispatch(TestingSlice.actions.calculatePoints(selected));
+    // }
+  };
 
   return (
     <div className={styles.testing}>
@@ -122,7 +131,9 @@ export const Testing = () => {
           />
         </div>
       </div>
-      <Button variant="default">Начать тест</Button>
+      <Button variant="default" onClick={endTest}>
+        Начать тест
+      </Button>
     </div>
   );
 };
