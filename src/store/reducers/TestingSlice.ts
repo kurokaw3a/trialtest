@@ -308,7 +308,7 @@ export const TestingSlice = createSlice({
         state.currentTest.totalUncorrect = uncorrectAnswers.length;
 
         alert(
-          `Ваш балл: ${state.currentTest.totalPoint || 0}\nКоличество неправильных ответов: ${state.currentTest.totalUncorrect || 0}`
+          `Ваш балл: ${state.currentTest.totalPoint}\nКоличество неправильных ответов: ${state.currentTest.totalUncorrect}`
         );
       }
     },

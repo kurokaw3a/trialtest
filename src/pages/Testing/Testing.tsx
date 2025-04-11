@@ -102,6 +102,7 @@ export const Testing = () => {
   };
 
   const endTest = () => {
+    alert("Считаем баллы...")
     // if (
     //   selected.math.length > 1 &&
     //   selected.russian1.length > 1 &&
