@@ -15,10 +15,12 @@ export const PdfViewer = (props: PdfViewerModel) => {
 
   const prevPage = () => {
     setPageNumber((prev) => (prev > 1 ? prev - 1 : numPages));
+    props.getPage?.(pageNumber)
   };
 
   const nextPage = () => {
     setPageNumber((prev) => (prev >= numPages ? 1 : prev + 1));
+    props.getPage?.(pageNumber)
   };
 
   return (

@@ -21,3 +21,8 @@
         overflow-x: auto;
     }
 }
+
+
+.locked{
+    opacity: 0.5;
+}

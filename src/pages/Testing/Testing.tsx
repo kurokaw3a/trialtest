@@ -95,6 +95,12 @@ export const Testing = () => {
     });
   };
 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const getPage = (page: number) => {
+    setCurrentPage(page);
+  };
+
   const endTest = () => {
     // if (
     //   selected.math.length > 1 &&
@@ -107,23 +113,25 @@ export const Testing = () => {
 
   return (
     <div className={styles.testing}>
-      <PdfViewer file={test.file} id={test.id} />
+      <PdfViewer file={test.file} id={test.id} getPage={getPage} />
       <div className={styles.container}>
-        <div>
+        <div className={currentPage > 9 ? styles.locked : ""}>
           <TestingComponent
             test={test.answers?.math}
             variant="math"
             onClick={selectMath}
           />
         </div>
-        <div>
+        <div
+          className={currentPage > 9 && currentPage < 23 ? "" : styles.locked}
+        >
           <TestingComponent
             test={test.answers?.russian1}
             variant="russian"
             onClick={selectRussian1}
           />
         </div>
-        <div>
+        <div className={currentPage > 22 ? "" : styles.locked}>
           <TestingComponent
             test={test.answers?.russian2}
             variant="russian"
@@ -132,7 +140,7 @@ export const Testing = () => {
         </div>
       </div>
       <Button variant="default" onClick={endTest}>
-        Начать тест
+        Завершить
       </Button>
     </div>
   );
