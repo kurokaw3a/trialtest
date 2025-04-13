@@ -95,26 +95,21 @@ export const Testing = () => {
     });
   };
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
-  const getPage = (page: number) => {
-    setCurrentPage(page);
-  };
 
   const endTest = () => {
-    alert("Считаем баллы...")
+    alert("Считаем баллы...");
     // if (
     //   selected.math.length > 1 &&
     //   selected.russian1.length > 1 &&
     //   selected.russian2.length > 1
     // ) {
-      dispatch(TestingSlice.actions.calculatePoints(selected));
+    dispatch(TestingSlice.actions.calculatePoints(selected));
     // }
   };
 
   return (
     <div className={styles.testing}>
-      <PdfViewer file={test.file} id={test.id} getPage={getPage} />
+      <PdfViewer file={test.file} id={test.id} />
       <div className={styles.section}>
         <div className={styles.controls}>
           <Button variant="default" onClick={endTest}>
@@ -122,7 +117,7 @@ export const Testing = () => {
           </Button>
         </div>
         <div className={styles.container}>
-          <div className={currentPage > 9 ? styles.locked : ""}>
+          <div className={test.page > 10 ? styles.locked : ""}>
             <TestingComponent
               test={test.answers?.math}
               variant="math"
@@ -130,7 +125,7 @@ export const Testing = () => {
             />
           </div>
           <div
-            className={currentPage > 9 && currentPage < 23 ? "" : styles.locked}
+            className={test.page > 10 && test.page < 24 ? "" : styles.locked}
           >
             <TestingComponent
               test={test.answers?.russian1}
@@ -138,7 +133,7 @@ export const Testing = () => {
               onClick={selectRussian1}
             />
           </div>
-          <div className={currentPage > 22 ? "" : styles.locked}>
+          <div className={test.page > 23 ? "" : styles.locked}>
             <TestingComponent
               test={test.answers?.russian2}
               variant="russian"

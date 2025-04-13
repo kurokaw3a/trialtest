@@ -4,6 +4,8 @@ import { PdfViewerModel } from "./PdfViewerModel";
 import { useState } from "react";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
+import { useAppDispatch } from "../../hooks/redux";
+import { TestingSlice } from "../../store/reducers/TestingSlice";
 
 export const PdfViewer = (props: PdfViewerModel) => {
   const [numPages, setNumPages] = useState<number>(NaN);
@@ -13,14 +15,21 @@ export const PdfViewer = (props: PdfViewerModel) => {
     setNumPages(numPages);
   }
 
-  const prevPage = () => {
-    setPageNumber((prev) => (prev > 1 ? prev - 1 : numPages));
-    props.getPage?.(pageNumber);
-  };
+  const dispatch = useAppDispatch();
 
   const nextPage = () => {
-    setPageNumber((prev) => (prev >= numPages ? 1 : prev + 1));
-    props.getPage?.(pageNumber);
+    setPageNumber((prev) => (prev == numPages ? 1 : prev + 1));
+    dispatch(
+      TestingSlice.actions.nextPage(
+        pageNumber === numPages ? 1 : pageNumber + 1
+      )
+    );
+  };
+  const prevPage = () => {
+    setPageNumber((prev) => (prev > 1 ? prev - 1 : numPages));
+    dispatch(
+      TestingSlice.actions.nextPage(pageNumber > 1 ? pageNumber - 1 : numPages)
+    );
   };
 
   return (

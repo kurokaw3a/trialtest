@@ -22,4 +22,5 @@ export interface ITestCurrent {
   };
   totalPoint?: number;
   totalUncorrect?: number;
+  page: number;
 }

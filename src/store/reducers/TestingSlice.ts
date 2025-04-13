@@ -191,6 +191,7 @@ const testFiles: ITestCurrent[] = [
         { number: 30, value: 4 },
       ],
     },
+    page: 1,
   },
   // {
   //   id: 18,
@@ -209,7 +210,9 @@ const testFiles: ITestCurrent[] = [
 const initialState = {
   list: testList,
   files: testFiles,
-  currentTest: {} as ITestCurrent,
+  currentTest: {
+    page: 1,
+  } as ITestCurrent,
 };
 
 export const TestingSlice = createSlice({
@@ -232,7 +235,14 @@ export const TestingSlice = createSlice({
         answers: state.currentTest.answers,
         totalPoint: 0,
         totalUncorrect: 0,
+        page: 1,
       };
+    },
+    nextPage: (state, action) => {
+      state.currentTest.page = action.payload;
+    },
+    prevPage: (state, action) => {
+      state.currentTest.page = action.payload;
     },
     calculatePoints: (state, action) => {
       const answers = action.payload as TestingCalculateModel;
@@ -246,7 +256,7 @@ export const TestingSlice = createSlice({
         const correctAnswersMap = new Map(
           testFile.answers.math.map((answer) => [answer.number, answer.value])
         );
-        
+
         const correctAnswersMapRussian1 = new Map(
           testFile.answers.russian1.map((answer) => [
             answer.number,
