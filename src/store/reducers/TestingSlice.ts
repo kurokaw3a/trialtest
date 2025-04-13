@@ -332,24 +332,21 @@ export const TestingSlice = createSlice({
         state.currentTest.totalUncorrect = uncorrectAnswers.length;
 
         alert(
-          `Ваш балл: ${state.currentTest.totalPoint}
-          \nВсего неправильных ответов: ${state.currentTest.totalUncorrect}
-        ${
-          mathAnswers.uncorrect.length > 0
-            ? `\nМатематика: ${mathAnswers.uncorrect.length}`
-            : ""
-        }
-          ${
+          [
+            `Ваш балл: ${state.currentTest.totalPoint}`,
+            `\nВсего неправильных ответов: ${state.currentTest.totalUncorrect}`,
+            mathAnswers.uncorrect.length > 0
+              ? `Математика: ${mathAnswers.uncorrect.length}`
+              : "",
             russian1Answers.uncorrect.length > 0
-              ? `\nАДП и ЧП: ${russian1Answers.uncorrect.length}`
-              : ""
-          }
-          ${
+              ? `АДП и ЧП: ${russian1Answers.uncorrect.length}`
+              : "",
             russian2Answers.uncorrect.length > 0
-              ? `\nГрамматика: ${russian2Answers.uncorrect.length}`
-              : ""
-          }
-          `
+              ? `Грамматика: ${russian2Answers.uncorrect.length}`
+              : "",
+          ]
+            .filter((line) => line !== "")
+            .join("\n")
         );
       }
     },
