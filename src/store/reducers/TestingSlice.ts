@@ -3,6 +3,7 @@ import { ITestCurrent, ITestList } from "./TestingModel";
 import logo from "../../assets/coomo_logo.e1e09338dc05a935d4ca5ba8981ca1fe.svg";
 import file1 from "../../assets/ceatm1.pdf";
 import { TestingCalculateModel } from "../../pages/Testing/TestingModel";
+import { TestingComponentModel } from "../../components/TestingComponent/TestingComponentModel";
 // import file2 from "../../assets/ceatm18.pdf";
 // import file3 from "../../assets/ceatm19.pdf";
 
@@ -213,6 +214,7 @@ const initialState = {
   currentTest: {
     page: 1,
   } as ITestCurrent,
+  text: "",
 };
 
 export const TestingSlice = createSlice({
@@ -247,9 +249,18 @@ export const TestingSlice = createSlice({
     calculatePoints: (state, action) => {
       const answers = action.payload as TestingCalculateModel;
 
-      const mathTrueAnswers = [];
-      const russian1TrueAnswers = [];
-      const russian2TrueAnswers = [];
+      const mathAnswers = {
+        true: [] as TestingComponentModel[],
+        uncorrect: [] as TestingComponentModel[],
+      };
+      const russian1Answers = {
+        true: [] as TestingComponentModel[],
+        uncorrect: [] as TestingComponentModel[],
+      };
+      const russian2Answers = {
+        true: [] as TestingComponentModel[],
+        uncorrect: [] as TestingComponentModel[],
+      };
       const uncorrectAnswers = [];
 
       for (const testFile of testFiles) {
@@ -277,8 +288,9 @@ export const TestingSlice = createSlice({
             correctAnswersMap.has(userAnswer.number) &&
             correctAnswersMap.get(userAnswer.number) === userAnswer.value
           ) {
-            mathTrueAnswers.push(userAnswer);
+            mathAnswers.true.push(userAnswer);
           } else {
+            mathAnswers.uncorrect.push(userAnswer);
             uncorrectAnswers.push(userAnswer);
           }
         }
@@ -290,8 +302,9 @@ export const TestingSlice = createSlice({
             correctAnswersMapRussian1.get(userAnswer.number) ===
               userAnswer.value
           ) {
-            russian1TrueAnswers.push(userAnswer);
+            russian1Answers.true.push(userAnswer);
           } else {
+            russian1Answers.uncorrect.push(userAnswer);
             uncorrectAnswers.push(userAnswer);
           }
         }
@@ -303,22 +316,40 @@ export const TestingSlice = createSlice({
             correctAnswersMapRussian2.get(userAnswer.number) ===
               userAnswer.value
           ) {
-            russian2TrueAnswers.push(userAnswer);
+            russian2Answers.true.push(userAnswer);
           } else {
+            russian2Answers.uncorrect.push(userAnswer);
             uncorrectAnswers.push(userAnswer);
           }
         }
         state.currentTest.totalPoint = parseFloat(
           (
-            mathTrueAnswers.length * 1.12 +
-            russian1TrueAnswers.length * 2 +
-            russian2TrueAnswers.length * 1.9
+            mathAnswers.true.length * 1.12 +
+            russian1Answers.true.length * 2 +
+            russian2Answers.true.length * 1.9
           ).toFixed(1)
         );
         state.currentTest.totalUncorrect = uncorrectAnswers.length;
 
         alert(
-          `Ваш балл: ${state.currentTest.totalPoint}\nКоличество неправильных ответов: ${state.currentTest.totalUncorrect}`
+          `Ваш балл: ${state.currentTest.totalPoint}
+          \nВсего неправильных ответов: ${state.currentTest.totalUncorrect}
+        ${
+          mathAnswers.uncorrect.length > 0
+            ? `\nМатематика: ${mathAnswers.uncorrect.length}`
+            : ""
+        }
+          ${
+            russian1Answers.uncorrect.length > 0
+              ? `\nАДП и ЧП: ${russian1Answers.uncorrect.length}`
+              : ""
+          }
+          ${
+            russian2Answers.uncorrect.length > 0
+              ? `\nГрамматика: ${russian2Answers.uncorrect.length}`
+              : ""
+          }
+          `
         );
       }
     },
