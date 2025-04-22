@@ -30,7 +30,6 @@ export const Testing = () => {
       const existingIndex = prevSelected.math.findIndex(
         (el) => el.number === number.number
       );
-
       if (existingIndex !== -1) {
         const updatedSelected = [...prevSelected.math];
         updatedSelected[existingIndex] = number;
@@ -95,7 +94,6 @@ export const Testing = () => {
     });
   };
 
-
   const endTest = () => {
     // if (
     //   selected.math.length > 1 &&
@@ -116,12 +114,23 @@ export const Testing = () => {
           </Button>
         </div>
         <div className={styles.container}>
-          <div className={test.page > 10 ? styles.locked : ""}>
-            <TestingComponent
-              test={test.answers?.math}
-              variant="math"
-              onClick={selectMath}
-            />
+          <div className={styles.block}>
+            <div className={test.page > 4 ? styles.locked : ""}>
+              <TestingComponent
+                test={test.answers?.math}
+                variant="russian"
+                onClick={selectMath}
+              />
+            </div>
+            <div
+              className={test.page > 10 || test.page < 5 ? styles.locked : ""}
+            >
+              <TestingComponent
+                test={test.answers?.math2}
+                variant="math"
+                onClick={selectMath}
+              />
+            </div>
           </div>
           <div
             className={test.page > 10 && test.page < 24 ? "" : styles.locked}

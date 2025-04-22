@@ -17,6 +17,7 @@ export interface ITestCurrent {
   totalQuestions: number;
   answers: {
     math: IAnswers[];
+    math2: IAnswers[];
     russian1: IAnswers[];
     russian2: IAnswers[];
   };

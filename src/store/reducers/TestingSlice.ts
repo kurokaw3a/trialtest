@@ -66,6 +66,8 @@ const testFiles: ITestCurrent[] = [
         { number: 28, value: 3 },
         { number: 29, value: 2 },
         { number: 30, value: 2 },
+      ],
+      math2: [
         { number: 31, value: 3 },
         { number: 32, value: 3 },
         { number: 33, value: 4 },
@@ -264,8 +266,9 @@ export const TestingSlice = createSlice({
       const uncorrectAnswers = [];
 
       for (const testFile of testFiles) {
+        const mathTotal = testFile.answers.math.concat(testFile.answers.math2);
         const correctAnswersMap = new Map(
-          testFile.answers.math.map((answer) => [answer.number, answer.value])
+          mathTotal.map((answer) => [answer.number, answer.value])
         );
 
         const correctAnswersMapRussian1 = new Map(
