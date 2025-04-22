@@ -37,7 +37,7 @@ const testFiles: ITestCurrent[] = [
     answers: {
       math: [
         { number: 1, value: 2 },
-        { number: 2, value: 1 },
+        { number: 2, value: 2 },
         { number: 3, value: 1 },
         { number: 4, value: 2 },
         { number: 5, value: 1 },
