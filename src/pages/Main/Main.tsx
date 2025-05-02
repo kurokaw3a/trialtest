@@ -1,7 +1,8 @@
 import styles from "./Main.module.css";
 import { Button } from "../../components/Buttons/Button";
 import { useAppSelector } from "../../hooks/redux";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 export const MainPage = () => {
   const testing = useAppSelector((state) => state.testing.list);
@@ -16,11 +17,11 @@ export const MainPage = () => {
             rel="preload"
           />
           <h2>{item.title}</h2>
-          <NavLink to={`/test/${item.id}`}>
+          <Link to={`/test/${item.id}`}>
             <Button variant="default" disabled={!item.status} onClick={()=>{}}>
               Начать тест
             </Button>
-          </NavLink>
+          </Link>
         </div>
       ))}
     </div>
