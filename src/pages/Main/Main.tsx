@@ -17,7 +17,7 @@ export const MainPage = () => {
           />
           <h2>{item.title}</h2>
           <NavLink to={`/test/${item.id}`}>
-            <Button variant="default" disabled={!item.status}>
+            <Button variant="default" disabled={!item.status} onClick={()=>{}}>
               Начать тест
             </Button>
           </NavLink>
