@@ -1,11 +1,11 @@
 import styles from "./Main.module.css";
 import { Button } from "../../components/Buttons/Button";
 import { useAppSelector } from "../../hooks/redux";
-import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 export const MainPage = () => {
   const testing = useAppSelector((state) => state.testing.list);
+  const navigate = useNavigate();
   return (
     <div className={styles.main}>
       {testing.map((item) => (
@@ -17,11 +17,15 @@ export const MainPage = () => {
             rel="preload"
           />
           <h2>{item.title}</h2>
-          <Link to={`/test/${item.id}`}>
-            <Button variant="default" disabled={!item.status} onClick={()=>{}}>
-              Начать тест
-            </Button>
-          </Link>
+          <Button
+            variant="default"
+            disabled={!item.status}
+            onClick={() => {
+              navigate(`/test/${item.id}`);
+            }}
+          >
+            Начать тест
+          </Button>
         </div>
       ))}
     </div>

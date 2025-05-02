@@ -6,7 +6,6 @@ export const Button = (props: ButtonModel) => {
     <button
       disabled={props.disabled}
       onClick={props.onClick}
-      onTouchStart={props.onTouchStart}
       className={
         (props.disabled && style.disabled) ||
         (props.variant === "default" && style.default) ||

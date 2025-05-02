@@ -3,5 +3,4 @@ export interface ButtonModel {
   onClick?: () => void;
   disabled?: boolean;
   variant: "default" | "navigation";
-  onTouchStart?: () => void;
 }

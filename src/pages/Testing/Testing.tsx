@@ -103,7 +103,7 @@ export const Testing = () => {
       <PdfViewer file={test.file} id={test.id} />
       <div className={styles.section}>
         <div className={styles.controls}>
-          <Button variant="default" onClick={endTest} onTouchStart={endTest}>
+          <Button variant="default" onClick={endTest}>
             Завершить
           </Button>
           <p className={styles.chapterIndicator}>
