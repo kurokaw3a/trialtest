@@ -95,13 +95,7 @@ export const Testing = () => {
   };
 
   const endTest = () => {
-    // if (
-    //   selected.math.length > 1 &&
-    //   selected.russian1.length > 1 &&
-    //   selected.russian2.length > 1
-    // ) {
     dispatch(TestingSlice.actions.calculatePoints(selected));
-    // }
   };
 
   return (
@@ -112,10 +106,17 @@ export const Testing = () => {
           <Button variant="default" onClick={endTest}>
             Завершить
           </Button>
+          <p className={styles.chapterIndicator}>
+            {test.page < 5 && "Математика 1"}
+            {test.page > 4 && test.page < 11 && "Математика 2"}
+            {test.page > 10 && test.page < 15 && "АДП"}
+            {test.page > 14 && test.page < 24 && "Чтение и понимание"}
+            {test.page > 23 && "Грамматика"}
+          </p>
         </div>
         <div className={styles.container}>
           <div className={styles.block}>
-            <div className={test.page > 4 ? styles.locked : ""}>
+            <div className={test.page > 4 ? styles.locked : ""} id="math1">
               <TestingComponent
                 test={test.answers?.math}
                 variant="russian"
@@ -124,6 +125,7 @@ export const Testing = () => {
             </div>
             <div
               className={test.page > 10 || test.page < 5 ? styles.locked : ""}
+              id="math2"
             >
               <TestingComponent
                 test={test.answers?.math2}
@@ -134,6 +136,7 @@ export const Testing = () => {
           </div>
           <div
             className={test.page > 10 && test.page < 24 ? "" : styles.locked}
+            id="russian"
           >
             <TestingComponent
               test={test.answers?.russian1}
@@ -141,7 +144,7 @@ export const Testing = () => {
               onClick={selectRussian1}
             />
           </div>
-          <div className={test.page > 23 ? "" : styles.locked}>
+          <div className={test.page > 23 ? "" : styles.locked} id="russian2">
             <TestingComponent
               test={test.answers?.russian2}
               variant="russian"

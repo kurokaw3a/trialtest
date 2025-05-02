@@ -1,6 +1,6 @@
 export interface ButtonModel {
     children: React.ReactNode;
-    onClick?: () => void;
+    onClick: () => void;
     disabled?: boolean;
     variant: "default" | "navigation";
 }

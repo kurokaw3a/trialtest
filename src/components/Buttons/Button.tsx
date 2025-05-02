@@ -7,9 +7,9 @@ export const Button = (props: ButtonModel) => {
       disabled={props.disabled}
       onClick={props.onClick}
       className={
-        (props.variant === "default" && !props.disabled && style.default) ||
-        (props.variant === "navigation" && style.navigation) ||
         (props.disabled && style.disabled) ||
+        (props.variant === "default" && style.default) ||
+        (props.variant === "navigation" && style.navigation) ||
         "default"
       }
     >

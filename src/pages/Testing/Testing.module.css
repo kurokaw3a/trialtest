@@ -45,6 +45,18 @@
 .controls{
     display: flex;
     align-items: center;
+    @media screen and (max-width:768px) {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+.chapterIndicator{
+    display: none;    
+    @media screen and (max-width:768px) {
+        display: inline;  
+    }
+    
 }
 
 .block{
