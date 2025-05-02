@@ -16,7 +16,6 @@ export const Testing = () => {
   useEffect(() => {
     dispatch(TestingSlice.actions.getTestById(id));
   }, [id, dispatch]);
-
   const test = useAppSelector((state) => state.testing.currentTest);
 
   const [selected, setSelected] = useState({
